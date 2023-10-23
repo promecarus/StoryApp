@@ -1,5 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<color name="black">#FF000000</color>
-	<color name="white">#FFFFFFFF</color>
+<resources xmlns:tools="http://schemas.android.com/tools">
+	<color name="seed" tools:ignore="UnusedResources">#0F0F0F</color>
+	<color name="md_theme_light_primary">#006874</color>
+	<color name="md_theme_light_onPrimary">#FFFFFF</color>
+	<color name="md_theme_light_primaryContainer">#97F0FF</color>
+	<color name="md_theme_light_onPrimaryContainer">#001F24</color>
+	<color name="md_theme_light_secondary">#295EA7</color>
+	<color name="md_theme_light_onSecondary">#FFFFFF</color>
+	<color name="md_theme_light_secondaryContainer">#D6E3FF</color>
+	<color name="md_theme_light_onSecondaryContainer">#001B3E</color>
+	<color name="md_theme_light_tertiary">#006C4E</color>
+	<color name="md_theme_light_onTertiary">#FFFFFF</color>
+	<color name="md_theme_light_tertiaryContainer">#87F8C9</color>
+	<color name="md_theme_light_onTertiaryContainer">#002115</color>
+	<color name="md_theme_light_error">#BA1A1A</color>
+	<color name="md_theme_light_errorContainer">#FFDAD6</color>
+	<color name="md_theme_light_onError">#FFFFFF</color>
+	<color name="md_theme_light_onErrorContainer">#410002</color>
+	<color name="md_theme_light_background">#F3FFFA</color>
+	<color name="md_theme_light_onBackground">#00201A</color>
+	<color name="md_theme_light_surface">#F3FFFA</color>
+	<color name="md_theme_light_onSurface">#00201A</color>
+	<color name="md_theme_light_surfaceVariant">#DBE4E6</color>
+	<color name="md_theme_light_onSurfaceVariant">#3F484A</color>
+	<color name="md_theme_light_outline">#6F797A</color>
+	<color name="md_theme_light_inverseOnSurface">#B7FFEC</color>
+	<color name="md_theme_light_inverseSurface">#00382E</color>
+	<color name="md_theme_light_inversePrimary">#4FD8EB</color>
+	<color name="md_theme_light_shadow" tools:ignore="UnusedResources">#000000</color>
+	<color name="md_theme_light_surfaceTint" tools:ignore="UnusedResources">#006874</color>
+	<color name="md_theme_light_outlineVariant" tools:ignore="UnusedResources">#BFC8CA</color>
+	<color name="md_theme_light_scrim" tools:ignore="UnusedResources">#000000</color>
+	<color name="md_theme_dark_primary">#4FD8EB</color>
+	<color name="md_theme_dark_onPrimary">#00363D</color>
+	<color name="md_theme_dark_primaryContainer">#004F58</color>
+	<color name="md_theme_dark_onPrimaryContainer">#97F0FF</color>
+	<color name="md_theme_dark_secondary">#A9C7FF</color>
+	<color name="md_theme_dark_onSecondary">#003064</color>
+	<color name="md_theme_dark_secondaryContainer">#00468C</color>
+	<color name="md_theme_dark_onSecondaryContainer">#D6E3FF</color>
+	<color name="md_theme_dark_tertiary">#6ADBAE</color>
+	<color name="md_theme_dark_onTertiary">#003827</color>
+	<color name="md_theme_dark_tertiaryContainer">#00513A</color>
+	<color name="md_theme_dark_onTertiaryContainer">#87F8C9</color>
+	<color name="md_theme_dark_error">#FFB4AB</color>
+	<color name="md_theme_dark_errorContainer">#93000A</color>
+	<color name="md_theme_dark_onError">#690005</color>
+	<color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
+	<color name="md_theme_dark_background">#00201A</color>
+	<color name="md_theme_dark_onBackground">#79F8DC</color>
+	<color name="md_theme_dark_surface">#00201A</color>
+	<color name="md_theme_dark_onSurface">#79F8DC</color>
+	<color name="md_theme_dark_surfaceVariant">#3F484A</color>
+	<color name="md_theme_dark_onSurfaceVariant">#BFC8CA</color>
+	<color name="md_theme_dark_outline">#899294</color>
+	<color name="md_theme_dark_inverseOnSurface">#00201A</color>
+	<color name="md_theme_dark_inverseSurface">#79F8DC</color>
+	<color name="md_theme_dark_inversePrimary">#006874</color>
+	<color name="md_theme_dark_shadow" tools:ignore="UnusedResources">#000000</color>
+	<color name="md_theme_dark_surfaceTint" tools:ignore="UnusedResources">#4FD8EB</color>
+	<color name="md_theme_dark_outlineVariant" tools:ignore="UnusedResources">#3F484A</color>
+	<color name="md_theme_dark_scrim" tools:ignore="UnusedResources">#000000</color>
 </resources>

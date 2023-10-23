@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="height_edit_text">48dp</dimen>
+	<dimen name="height_edit_text_description">114dp</dimen>
+	<dimen name="image_dimension">379dp</dimen>
+	<dimen name="margin_horizontal_button">46dp</dimen>
+	<dimen name="margin_horizontal_edit_text">46dp</dimen>
+	<dimen name="margin_small">8dp</dimen>
+	<dimen name="margin_medium">16dp</dimen>
+	<dimen name="margin_large">32dp</dimen>
+	<dimen name="padding_small">8dp</dimen>
+	<dimen name="padding_medium">16dp</dimen>
+</resources>

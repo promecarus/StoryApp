@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".ui.DetailActivity">
+
+	<com.google.android.material.appbar.AppBarLayout
+		android:id="@+id/app_bar_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<com.google.android.material.appbar.MaterialToolbar
+			android:id="@+id/top_app_bar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:minHeight="?attr/actionBarSize"
+			app:navigationIcon="@drawable/ic_back"
+			app:titleTextAppearance="?attr/textAppearanceTitleMedium"
+			tools:title="Detail Story (ID: story-asd)" />
+	</com.google.android.material.appbar.AppBarLayout>
+
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/app_bar_layout">
+
+		<com.google.android.material.card.MaterialCardView
+			android:id="@+id/mcv_detail"
+			style="?attr/materialCardViewElevatedStyle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/margin_medium"
+			android:transitionName="card"
+			app:strokeWidth="1dp">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical"
+				android:paddingVertical="@dimen/padding_medium">
+
+				<TextView
+					android:id="@+id/tv_detail_name"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingHorizontal="@dimen/padding_medium"
+					android:textAppearance="?attr/textAppearanceLabelMedium"
+					android:transitionName="name"
+					tools:text="Name" />
+
+				<TextView
+					android:id="@+id/tv_detail_created"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="@dimen/margin_medium"
+					android:paddingHorizontal="@dimen/padding_medium"
+					android:textAppearance="?attr/textAppearanceLabelMedium"
+					android:textColor="?attr/colorOutline"
+					android:transitionName="created"
+					tools:ignore="TextContrastCheck"
+					tools:text="0 seconds ago from somewhere" />
+
+				<ImageView
+					android:id="@+id/iv_detail_photo"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="@dimen/margin_medium"
+					android:contentDescription="@string/story_photo"
+					android:transitionName="photo" />
+
+				<TextView
+					android:id="@+id/tv_detail_description"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingHorizontal="@dimen/padding_medium"
+					android:textAppearance="?attr/textAppearanceLabelMedium"
+					android:transitionName="description"
+					tools:text="Description" />
+			</LinearLayout>
+		</com.google.android.material.card.MaterialCardView>
+	</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

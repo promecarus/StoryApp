@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".ui.RegisterActivity">
+
+	<TextView
+		android:id="@+id/tv_title"
+		style="?attr/textAppearanceDisplayMedium"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/margin_medium"
+		android:text="@string/app_name"
+		android:transitionName="tv_title"
+		app:layout_constraintBottom_toTopOf="@id/ed_register_name"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<com.promecarus.storyapp.custom.edittext.EditTextName
+		android:id="@+id/ed_register_name"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/height_edit_text"
+		android:layout_marginHorizontal="@dimen/margin_horizontal_edit_text"
+		android:layout_marginBottom="@dimen/margin_medium"
+		app:layout_constraintBottom_toTopOf="@id/ed_register_email"
+		tools:ignore="TextContrastCheck" />
+
+	<com.promecarus.storyapp.custom.edittext.EditTextEmail
+		android:id="@+id/ed_register_email"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/height_edit_text"
+		android:layout_marginHorizontal="@dimen/margin_horizontal_edit_text"
+		android:layout_marginBottom="@dimen/margin_medium"
+		android:transitionName="ed_email"
+		app:layout_constraintBottom_toTopOf="@id/ed_register_password"
+		tools:ignore="TextContrastCheck" />
+
+	<com.promecarus.storyapp.custom.edittext.EditTextPassword
+		android:id="@+id/ed_register_password"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/height_edit_text"
+		android:layout_marginHorizontal="@dimen/margin_horizontal_edit_text"
+		android:imeOptions="actionDone"
+		android:transitionName="ed_password"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:strictValidation="true"
+		tools:ignore="TextContrastCheck" />
+
+	<Button
+		android:id="@+id/btn_register"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/margin_horizontal_button"
+		android:layout_marginTop="@dimen/margin_medium"
+		android:enabled="false"
+		android:text="@string/register"
+		android:transitionName="btn_register"
+		app:layout_constraintTop_toBottomOf="@id/ed_register_password" />
+
+	<Button
+		android:id="@+id/btn_login"
+		style="?attr/materialButtonOutlinedStyle"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/margin_horizontal_button"
+		android:layout_marginTop="@dimen/margin_medium"
+		android:text="@string/login"
+		android:transitionName="btn_login"
+		app:layout_constraintTop_toBottomOf="@id/btn_register" />
+
+	<ProgressBar
+		android:id="@+id/progress_bar"
+		style="?android:attr/progressBarStyle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:visibility="gone"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>

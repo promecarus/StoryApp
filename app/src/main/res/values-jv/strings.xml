@@ -1,0 +1,81 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+	<plurals name="time_seconds_ago">
+		<item quantity="other">%d detik ingkang kepengker</item>
+	</plurals>
+	<plurals name="time_minutes_ago">
+		<item quantity="other">%d menit ingkang kepengker</item>
+	</plurals>
+	<plurals name="time_hours_ago">
+		<item quantity="other">%d jam ingkang kepengker</item>
+	</plurals>
+	<plurals name="time_days_ago">
+		<item quantity="other">%d dina ingkang kepengker</item>
+	</plurals>
+	<plurals name="time_weeks_ago">
+		<item quantity="other">%d pekan ingkang kepengker</item>
+	</plurals>
+	<plurals name="time_months_ago">
+		<item quantity="other">%d wulan ingkang kepengker</item>
+	</plurals>
+	<plurals name="time_years_ago">
+		<item quantity="other">%d taun ingkang kepengker</item>
+	</plurals>
+	<string name="add_story">Tambahi Cerito</string>
+	<string name="app_name">Aplikasi Cerito</string>
+	<string name="camera">Kamera</string>
+	<string name="cannot_be_empty">Ora boleh kosong</string>
+	<string name="cannot_more_than">Ora boleh luwih saka %1$d</string>
+	<string name="connect_or_relaunch">Ora bisa nyambung karo internet. Sampuncek jaringan sampeyan utawa mulihake aplikasi.</string>
+	<string name="data_size">Ukuran Data</string>
+	<string name="denied">ditolak</string>
+	<string name="description">Larapan</string>
+	<string name="email">Email</string>
+	<string name="error">Kesalahan</string>
+	<string name="error_bad_http_auth">Mulihake aplikasi kanggo ngrampungake iki</string>
+	<string name="error_complete_all_input">Tolong lengkapno kabeh masukan dulu</string>
+	<string name="error_description_cannot_be_empty">Larapan ora boleh kosong</string>
+	<string name="error_email_address_cannot_be_empty">Alamat email ora boleh kosong</string>
+	<string name="error_email_address_invalid">Alamat email ora sah</string>
+	<string name="error_email_already_taken">Email wis dienggo</string>
+	<string name="error_email_not_valid">"email" kudu email sing sah</string>
+	<string name="error_input">Masukan Kesalahan</string>
+	<string name="error_login">Login Gagal</string>
+	<string name="error_name_empty">Nami ora boleh kosong</string>
+	<string name="error_no_internet">Ora Ana Sambungan Internet</string>
+	<string name="error_no_stories">Ora ana cerito</string>
+	<string name="error_password_digit">Sandi wajib ngandung setidakna siji angka</string>
+	<string name="error_password_empty">Sandi ora boleh kosong</string>
+	<string name="error_password_invalid">Sandi ora sah</string>
+	<string name="error_password_less_characters" tools:ignore="PluralsCandidate">Sandi wajib duwe setidakna %1$d karakter</string>
+	<string name="error_password_lowercase_letter">Sandi wajib ngandung setidakna siji aksara cilik</string>
+	<string name="error_password_special_character">Sandi wajib ngandung setidakna siji karakter spesial</string>
+	<string name="error_password_uppercase_letter">Sandi wajib ngandung setidakna siji aksara gedhe</string>
+	<string name="error_registration">Pendaftaran Gagal</string>
+	<string name="error_user_not_found">Pengguna ora kapendek</string>
+	<string name="from">" saka %1$s"</string>
+	<string name="gallery">Galeri</string>
+	<string name="granted">disetujoni</string>
+	<string name="image_preview">Pratayang Gambar</string>
+	<string name="language">Basa</string>
+	<string name="login">Mlebu</string>
+	<string name="logout">Mlaku</string>
+	<string name="name">Jeneng</string>
+	<string name="ok">OK</string>
+	<string name="password">Sandi</string>
+	<string name="permission_request">Paminta Ijin %1$s</string>
+	<string name="register">Daftar</string>
+	<string name="rto">Lalu lintas kang luwih utama saiki, monggo segarakno manual</string>
+	<string name="setting">Pangaturan</string>
+	<string name="story">Cerito</string>
+	<string name="story_photo">Foto Cerito</string>
+	<string name="success_add_story">Cerito sukses didamel</string>
+	<string name="success_login">Sukses mlebu</string>
+	<string name="success_register">Sukses terdaftar, mlebu karo identitasmu</string>
+	<string name="time_handle">0 detik kepungkur</string>
+	<string name="try_again">Coba Maning</string>
+	<string name="upload">Unggah</string>
+	<string name="value_id">Rincian Cerito (ID: %1$s)</string>
+	<string name="value_lat_lon">" saka %1$s"</string>
+	<string name="wait">Monggo nunggu sakedik</string>
+	<string name="with_location">Kudu ngandani lokasi</string>
+</resources>

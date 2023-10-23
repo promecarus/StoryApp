@@ -1,3 +1,88 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+	<plurals name="time_seconds_ago">
+		<item quantity="one">%d second ago</item>
+		<item quantity="other">%d seconds ago</item>
+	</plurals>
+	<plurals name="time_minutes_ago">
+		<item quantity="one">%d minute ago</item>
+		<item quantity="other">%d minutes ago</item>
+	</plurals>
+	<plurals name="time_hours_ago">
+		<item quantity="one">%d hour ago</item>
+		<item quantity="other">%d hours ago</item>
+	</plurals>
+	<plurals name="time_days_ago">
+		<item quantity="one">%d day ago</item>
+		<item quantity="other">%d days ago</item>
+	</plurals>
+	<plurals name="time_weeks_ago">
+		<item quantity="one">%d week ago</item>
+		<item quantity="other">%d weeks ago</item>
+	</plurals>
+	<plurals name="time_months_ago">
+		<item quantity="one">%d month ago</item>
+		<item quantity="other">%d months ago</item>
+	</plurals>
+	<plurals name="time_years_ago">
+		<item quantity="one">%d year ago</item>
+		<item quantity="other">%d years ago</item>
+	</plurals>
+	<string name="add_story">Add Story</string>
 	<string name="app_name">Story App</string>
+	<string name="camera">Camera</string>
+	<string name="cannot_be_empty">Cannot be empty</string>
+	<string name="cannot_more_than">Cannot more than %1$d</string>
+	<string name="connect_or_relaunch">Unable to connect to the internet. Please check your connection or relaunch the application.</string>
+	<string name="data_size">Data Size</string>
+	<string name="denied">denied</string>
+	<string name="description">Description</string>
+	<string name="email">Email</string>
+	<string name="error">Error</string>
+	<string name="error_bad_http_auth">Relaunch the application to solve this</string>
+	<string name="error_complete_all_input">Please complete all input first</string>
+	<string name="error_description_cannot_be_empty">Description cannot be empty</string>
+	<string name="error_email_address_cannot_be_empty">Email address cannot be empty</string>
+	<string name="error_email_address_invalid">Invalid email address</string>
+	<string name="error_email_already_taken">Email is already taken</string>
+	<string name="error_email_not_valid">\"email\" must be a valid email</string>
+	<string name="error_input">Error Input</string>
+	<string name="error_login">Login Failed</string>
+	<string name="error_name_empty">Name cannot be empty</string>
+	<string name="error_no_internet">No Internet Connection</string>
+	<string name="error_no_stories">No stories</string>
+	<string name="error_password_digit">Password must contain at least one digit</string>
+	<string name="error_password_empty">Password cannot be empty</string>
+	<string name="error_password_invalid">Invalid password</string>
+	<string name="error_password_less_characters" tools:ignore="PluralsCandidate">Password must be at least %1$d characters</string>
+	<string name="error_password_lowercase_letter">Password must contain at least one lowercase letter</string>
+	<string name="error_password_special_character">Password must contain at least one special character</string>
+	<string name="error_password_uppercase_letter">Password must contain at least one uppercase letter</string>
+	<string name="error_registration">Registration Failed</string>
+	<string name="error_user_not_found">User not found</string>
+	<string name="from">" from %1$s"</string>
+	<string name="gallery">Gallery</string>
+	<string name="granted">granted</string>
+	<string name="image_preview">Image preview</string>
+	<string name="language">Language</string>
+	<string name="login">Login</string>
+	<string name="logout">Logout</string>
+	<string name="name">Name</string>
+	<string name="ok">OK</string>
+	<string name="password">Password</string>
+	<string name="permission_request">Permission request %1$s</string>
+	<string name="register">Register</string>
+	<string name="rto">High traffic currently, please refresh manually</string>
+	<string name="setting">Settings</string>
+	<string name="story">Story</string>
+	<string name="story_photo">Story photo</string>
+	<string name="success_add_story">Story created successful</string>
+	<string name="success_login">Success logged in</string>
+	<string name="success_register">Successfully registered, login with your credentials</string>
+	<string name="time_handle">0 seconds ago</string>
+	<string name="try_again">Try Again</string>
+	<string name="upload">Upload</string>
+	<string name="value_id">Detail Story (ID: %1$s)</string>
+	<string name="value_lat_lon">" from %1$s"</string>
+	<string name="wait">Please wait a little bit</string>
+	<string name="with_location">Must include location</string>
 </resources>
