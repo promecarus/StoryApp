@@ -1,4 +1,4 @@
-package com.promecarus.storyapp.data.remote.retrofit
+package com.promecarus.storyapp.data.remote
 
 import com.promecarus.storyapp.BuildConfig.BASE_URL
 import com.promecarus.storyapp.BuildConfig.DEBUG
