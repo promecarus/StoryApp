@@ -3,8 +3,8 @@ package com.promecarus.storyapp.data.repository
 import android.content.Context
 import android.net.Uri
 import com.google.gson.Gson
-import com.promecarus.storyapp.data.preference.SessionPreference
-import com.promecarus.storyapp.data.preference.SettingPreference
+import com.promecarus.storyapp.data.local.preference.SessionPreference
+import com.promecarus.storyapp.data.local.preference.SettingPreference
 import com.promecarus.storyapp.data.remote.ApiService
 import com.promecarus.storyapp.data.remote.response.Common
 import com.promecarus.storyapp.utils.ImageUtils.uriToFile

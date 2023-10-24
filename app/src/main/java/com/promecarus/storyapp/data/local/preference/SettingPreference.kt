@@ -1,4 +1,4 @@
-package com.promecarus.storyapp.data.preference
+package com.promecarus.storyapp.data.local.preference
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

@@ -1,8 +1,8 @@
 package com.promecarus.storyapp.utils
 
 import android.content.Context
-import com.promecarus.storyapp.data.preference.SessionPreference
-import com.promecarus.storyapp.data.preference.SettingPreference
+import com.promecarus.storyapp.data.local.preference.SessionPreference
+import com.promecarus.storyapp.data.local.preference.SettingPreference
 import com.promecarus.storyapp.data.remote.ApiConfig.apiService
 import com.promecarus.storyapp.data.repository.AuthRepository
 import com.promecarus.storyapp.data.repository.SettingRepository

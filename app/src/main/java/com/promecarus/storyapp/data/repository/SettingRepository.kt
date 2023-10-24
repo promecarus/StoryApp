@@ -1,6 +1,6 @@
 package com.promecarus.storyapp.data.repository
 
-import com.promecarus.storyapp.data.preference.SettingPreference
+import com.promecarus.storyapp.data.local.preference.SettingPreference
 import com.promecarus.storyapp.utils.Setting
 
 class SettingRepository private constructor(
