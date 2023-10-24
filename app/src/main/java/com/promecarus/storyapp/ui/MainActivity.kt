@@ -1,6 +1,7 @@
 package com.promecarus.storyapp.ui
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import android.os.Bundle
 import android.provider.Settings.ACTION_LOCALE_SETTINGS
 import android.view.View.GONE
@@ -11,6 +12,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.promecarus.storyapp.R.id.action_language
 import com.promecarus.storyapp.R.id.action_logout
+import com.promecarus.storyapp.R.id.action_map
 import com.promecarus.storyapp.R.id.action_settings
 import com.promecarus.storyapp.R.string.error_no_stories
 import com.promecarus.storyapp.custom.adapter.StoryAdapter
@@ -45,18 +47,23 @@ class MainActivity : AppCompatActivity() {
 
         binding.topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
-                action_logout -> {
-                    viewModel.logout()
-                    true
-                }
-
                 action_language -> {
                     startActivity(Intent(ACTION_LOCALE_SETTINGS))
                     true
                 }
 
+                action_map -> {
+                    startActivity(Intent(this, MapsActivity::class.java))
+                    true
+                }
+
                 action_settings -> {
                     startActivity(Intent(this, SettingActivity::class.java))
+                    true
+                }
+
+                action_logout -> {
+                    viewModel.logout()
                     true
                 }
 
@@ -88,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.session.collect {
                 if (it.token.isEmpty()) {
                     startActivity(Intent(this@MainActivity, LoginActivity::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+                        flags = FLAG_ACTIVITY_NO_ANIMATION
                     })
                     finish()
                 } else {

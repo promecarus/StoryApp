@@ -6,6 +6,8 @@
 		android:name="android.hardware.camera"
 		android:required="false" />
 
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission
@@ -31,7 +33,14 @@
 				android:name="android.support.FILE_PROVIDER_PATHS"
 				android:resource="@xml/file_paths" />
 		</provider>
+		<meta-data
+			android:name="com.google.android.geo.API_KEY"
+			android:value="AIzaSyANKf_oazHxCsVpsjnbNvdGmquJ3hk_1tk" />
 
+		<activity
+			android:name=".ui.MapsActivity"
+			android:exported="false"
+			android:label="@string/title_activity_maps" />
 		<activity
 			android:name=".ui.SettingActivity"
 			android:exported="false" />

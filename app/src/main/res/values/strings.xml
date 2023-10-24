@@ -66,6 +66,7 @@
 	<string name="language">Language</string>
 	<string name="login">Login</string>
 	<string name="logout">Logout</string>
+	<string name="map">Map</string>
 	<string name="name">Name</string>
 	<string name="ok">OK</string>
 	<string name="password">Password</string>
@@ -79,6 +80,7 @@
 	<string name="success_login">Success logged in</string>
 	<string name="success_register">Successfully registered, login with your credentials</string>
 	<string name="time_handle">0 seconds ago</string>
+	<string name="title_activity_maps" translatable="false">MapsActivity</string>
 	<string name="try_again">Try Again</string>
 	<string name="upload">Upload</string>
 	<string name="value_id">Detail Story (ID: %1$s)</string>

@@ -26,13 +26,13 @@ class StoryRepository private constructor(
     private val sessionPreference: SessionPreference,
     private val settingPreference: SettingPreference,
 ) {
-    suspend fun getStories() = flow {
+    suspend fun getStories(mustWithLocation: Int = 0) = flow {
         emit(Loading)
         try {
             apiService.getStories(
                 "Bearer ${sessionPreference.getSession().first().token}",
                 settingPreference.getSetting().first().size,
-                if (settingPreference.getSetting().first().location) 1 else 0
+                if (settingPreference.getSetting().first().location) 1 else mustWithLocation
             ).let {
                 emit(Default)
                 if (it.isSuccessful) it.body()?.also { data ->
@@ -48,8 +48,8 @@ class StoryRepository private constructor(
 
     suspend fun addStory(context: Context, description: String, uri: Uri) = flow {
         emit(Loading)
-        val requestBody = description.toRequestBody("text/plain".toMediaType())
         val photo = uriToFile(context, uri).reduceFileImage()
+        val requestBody = description.toRequestBody("text/plain".toMediaType())
         val multiPartBodyPart = MultipartBody.Part.createFormData(
             "photo", photo.name, photo.asRequestBody("image/jpeg".toMediaType())
         )

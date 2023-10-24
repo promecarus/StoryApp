@@ -9,6 +9,7 @@ import com.promecarus.storyapp.data.repository.StoryRepository
 import com.promecarus.storyapp.ui.viewmodel.AddViewModel
 import com.promecarus.storyapp.ui.viewmodel.LoginViewModel
 import com.promecarus.storyapp.ui.viewmodel.MainViewModel
+import com.promecarus.storyapp.ui.viewmodel.MapsViewModel
 import com.promecarus.storyapp.ui.viewmodel.RegisterViewModel
 import com.promecarus.storyapp.ui.viewmodel.SettingViewModel
 import com.promecarus.storyapp.utils.Injection.provideAuthRepository
@@ -36,6 +37,10 @@ class ViewModelFactory(
 
         modelClass.isAssignableFrom(AddViewModel::class.java) -> {
             AddViewModel(storyRepository) as T
+        }
+
+        modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
+            MapsViewModel(storyRepository) as T
         }
 
         modelClass.isAssignableFrom(SettingViewModel::class.java) -> {

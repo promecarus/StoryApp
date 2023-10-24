@@ -8,6 +8,12 @@
 		android:title="@string/language"
 		app:showAsAction="ifRoom" />
 	<item
+		android:id="@+id/action_map"
+		android:contentDescription="@string/map"
+		android:icon="@drawable/ic_map"
+		android:title="@string/map"
+		app:showAsAction="ifRoom" />
+	<item
 		android:id="@+id/action_settings"
 		android:contentDescription="@string/setting"
 		android:icon="@drawable/ic_setting"

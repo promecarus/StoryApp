@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("kotlin-parcelize")
     id("org.jetbrains.kotlin.android")
 }
@@ -61,6 +62,9 @@ dependencies {
 
     // glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // gms
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
 
     // okhttp
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
