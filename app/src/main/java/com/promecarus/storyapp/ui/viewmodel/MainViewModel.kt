@@ -2,7 +2,7 @@ package com.promecarus.storyapp.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.promecarus.storyapp.data.remote.response.Story
+import com.promecarus.storyapp.data.model.Story
 import com.promecarus.storyapp.data.repository.AuthRepository
 import com.promecarus.storyapp.data.repository.StoryRepository
 import com.promecarus.storyapp.utils.State

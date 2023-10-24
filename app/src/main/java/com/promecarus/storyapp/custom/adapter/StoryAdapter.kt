@@ -10,7 +10,7 @@ import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.promecarus.storyapp.R.string.from
-import com.promecarus.storyapp.data.remote.response.Story
+import com.promecarus.storyapp.data.model.Story
 import com.promecarus.storyapp.databinding.ItemStoryBinding
 import com.promecarus.storyapp.ui.DetailActivity
 import com.promecarus.storyapp.utils.HelperUtils.getCity

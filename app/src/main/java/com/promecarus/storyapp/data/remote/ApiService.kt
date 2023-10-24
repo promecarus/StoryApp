@@ -1,8 +1,8 @@
 package com.promecarus.storyapp.data.remote
 
-import com.promecarus.storyapp.data.remote.response.Common
-import com.promecarus.storyapp.data.remote.response.Login
-import com.promecarus.storyapp.data.remote.response.Stories
+import com.promecarus.storyapp.data.model.Common
+import com.promecarus.storyapp.data.model.Login
+import com.promecarus.storyapp.data.model.Stories
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response

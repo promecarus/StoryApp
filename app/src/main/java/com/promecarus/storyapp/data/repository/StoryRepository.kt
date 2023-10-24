@@ -5,8 +5,8 @@ import android.net.Uri
 import com.google.gson.Gson
 import com.promecarus.storyapp.data.local.preference.SessionPreference
 import com.promecarus.storyapp.data.local.preference.SettingPreference
+import com.promecarus.storyapp.data.model.Common
 import com.promecarus.storyapp.data.remote.ApiService
-import com.promecarus.storyapp.data.remote.response.Common
 import com.promecarus.storyapp.utils.ImageUtils.uriToFile
 import com.promecarus.storyapp.utils.State.Default
 import com.promecarus.storyapp.utils.State.Error

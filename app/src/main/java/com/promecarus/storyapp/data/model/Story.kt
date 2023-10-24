@@ -1,4 +1,4 @@
-package com.promecarus.storyapp.data.remote.response
+package com.promecarus.storyapp.data.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.promecarus.storyapp.R.string.value_id
 import com.promecarus.storyapp.R.string.value_lat_lon
-import com.promecarus.storyapp.data.remote.response.Story
+import com.promecarus.storyapp.data.model.Story
 import com.promecarus.storyapp.databinding.ActivityDetailBinding
 import com.promecarus.storyapp.utils.HelperUtils.getCity
 import com.promecarus.storyapp.utils.HelperUtils.parseDate

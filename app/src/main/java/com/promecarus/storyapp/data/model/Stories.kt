@@ -1,4 +1,4 @@
-package com.promecarus.storyapp.data.remote.response
+package com.promecarus.storyapp.data.model
 
 data class Stories(
     val message: String,

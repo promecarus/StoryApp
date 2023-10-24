@@ -1,4 +1,4 @@
-package com.promecarus.storyapp.data.remote.response
+package com.promecarus.storyapp.data.model
 
 import com.google.gson.annotations.SerializedName
 

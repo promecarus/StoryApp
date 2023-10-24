@@ -2,8 +2,8 @@ package com.promecarus.storyapp.data.repository
 
 import com.google.gson.Gson
 import com.promecarus.storyapp.data.local.preference.SessionPreference
+import com.promecarus.storyapp.data.model.Common
 import com.promecarus.storyapp.data.remote.ApiService
-import com.promecarus.storyapp.data.remote.response.Common
 import com.promecarus.storyapp.utils.State.Default
 import com.promecarus.storyapp.utils.State.Error
 import com.promecarus.storyapp.utils.State.Loading
