@@ -59,18 +59,20 @@ class StoryRepository private constructor(
         }
     }
 
-    suspend fun addStory(context: Context, description: String, uri: Uri) = flow {
+    suspend fun addStory(
+        context: Context, description: String, uri: Uri, lat: Double?, lon: Double?,
+    ) = flow {
         emit(Loading)
-        val requestBody = description.toRequestBody("text/plain".toMediaType())
         val photo = uriToFile(context, uri).reduceFileImage()
-        val multiPartBodyPart = MultipartBody.Part.createFormData(
-            "photo", photo.name, photo.asRequestBody("image/jpeg".toMediaType())
-        )
         try {
             apiService.addStory(
                 "Bearer ${sessionPreference.getSession().first().token}",
-                requestBody,
-                multiPartBodyPart
+                description.toRequestBody("text/plain".toMediaType()),
+                MultipartBody.Part.createFormData(
+                    "photo", photo.name, photo.asRequestBody("image/jpeg".toMediaType())
+                ),
+                lat?.toString()?.toRequestBody("text/plain".toMediaType()),
+                lon?.toString()?.toRequestBody("text/plain".toMediaType())
             ).let {
                 emit(Default)
                 if (it.isSuccessful) it.body()?.also { data ->

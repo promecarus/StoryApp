@@ -47,7 +47,7 @@ class AddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddBinding
     private val viewModel by viewModels<AddViewModel> { getInstance(this) }
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private lateinit var location: Location
+    private var location: Location = Location("")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,13 +60,6 @@ class AddActivity : AppCompatActivity() {
 
     private fun setupAction() {
         var currentImageUri: Uri = EMPTY
-//        val requestPermissionLauncher = registerForActivityResult(RequestPermission()) {
-//            makeText(
-//                this,
-//                getString(permission_request, if (it) getString(granted) else getString(denied)),
-//                LENGTH_LONG
-//            ).show()
-//        }
         val launcherGallery = registerForActivityResult(PickVisualMedia()) {
             it?.let {
                 currentImageUri = it
@@ -108,7 +101,11 @@ class AddActivity : AppCompatActivity() {
 
         binding.buttonAdd.setOnClickListener {
             if (!EMPTY.equals(currentImageUri) && !binding.edAddDescription.text.isNullOrEmpty()) {
-                viewModel.addStory(this, binding.edAddDescription.text.toString(), currentImageUri)
+                viewModel.addStory(this,
+                    binding.edAddDescription.text.toString(),
+                    currentImageUri,
+                    location.latitude.takeIf { binding.smLocation.isChecked },
+                    location.longitude.takeIf { binding.smLocation.isChecked })
             } else makeText(this, error_complete_all_input, LENGTH_LONG).show()
         }
     }

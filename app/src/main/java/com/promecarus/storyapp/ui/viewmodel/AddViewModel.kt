@@ -14,9 +14,10 @@ class AddViewModel(private val storyRepository: StoryRepository) : ViewModel() {
     private val _state = MutableStateFlow<State<String>>(State.Default)
     val state: StateFlow<State<String>> = _state
 
-    fun addStory(context: Context, description: String, uri: Uri) {
+    fun addStory(context: Context, description: String, uri: Uri, lat: Double?, lon: Double?) {
         viewModelScope.launch {
-            storyRepository.addStory(context, description, uri).collect { _state.value = it }
+            storyRepository.addStory(context, description, uri, lat, lon)
+                .collect { _state.value = it }
         }
     }
 }
