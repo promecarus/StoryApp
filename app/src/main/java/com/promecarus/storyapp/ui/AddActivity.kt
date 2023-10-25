@@ -1,11 +1,14 @@
 package com.promecarus.storyapp.ui
 
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.CAMERA
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.location.Location
 import android.net.Uri
 import android.net.Uri.EMPTY
 import android.os.Bundle
@@ -18,16 +21,15 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia
 import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia.ImageOnly
-import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
 import androidx.activity.result.contract.ActivityResultContracts.TakePicture
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.lifecycle.lifecycleScope
-import com.promecarus.storyapp.R.string.denied
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices.getFusedLocationProviderClient
 import com.promecarus.storyapp.R.string.error_complete_all_input
-import com.promecarus.storyapp.R.string.granted
-import com.promecarus.storyapp.R.string.permission_request
 import com.promecarus.storyapp.R.string.success_add_story
 import com.promecarus.storyapp.R.string.wait
 import com.promecarus.storyapp.databinding.ActivityAddBinding
@@ -44,6 +46,8 @@ import kotlinx.coroutines.launch
 class AddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddBinding
     private val viewModel by viewModels<AddViewModel> { getInstance(this) }
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var location: Location
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,13 +60,13 @@ class AddActivity : AppCompatActivity() {
 
     private fun setupAction() {
         var currentImageUri: Uri = EMPTY
-        val requestPermissionLauncher = registerForActivityResult(RequestPermission()) {
-            makeText(
-                this,
-                getString(permission_request, if (it) getString(granted) else getString(denied)),
-                LENGTH_LONG
-            ).show()
-        }
+//        val requestPermissionLauncher = registerForActivityResult(RequestPermission()) {
+//            makeText(
+//                this,
+//                getString(permission_request, if (it) getString(granted) else getString(denied)),
+//                LENGTH_LONG
+//            ).show()
+//        }
         val launcherGallery = registerForActivityResult(PickVisualMedia()) {
             it?.let {
                 currentImageUri = it
@@ -85,10 +89,9 @@ class AddActivity : AppCompatActivity() {
 
         binding.topAppBar.setNavigationOnClickListener { backCallback.handleOnBackPressed() }
 
-        if (checkSelfPermission(
-                this, CAMERA
-            ) != PERMISSION_GRANTED
-        ) requestPermissionLauncher.launch(CAMERA)
+        fusedLocationClient = getFusedLocationProviderClient(this)
+
+        if (!checkCameraPermission() && !checkLocationPermission()) requestPermissions()
 
         binding.btnCamera.setOnClickListener {
             currentImageUri = getImageUri(this)
@@ -97,6 +100,10 @@ class AddActivity : AppCompatActivity() {
 
         binding.btnGallery.setOnClickListener {
             launcherGallery.launch(PickVisualMediaRequest(ImageOnly))
+        }
+
+        binding.smLocation.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) getLocation()
         }
 
         binding.buttonAdd.setOnClickListener {
@@ -138,5 +145,34 @@ class AddActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun checkCameraPermission() = checkSelfPermission(this, CAMERA) == PERMISSION_GRANTED
+
+    private fun checkLocationPermission() = (checkSelfPermission(
+        this, ACCESS_COARSE_LOCATION
+    ) == PERMISSION_GRANTED) && checkSelfPermission(
+        this, ACCESS_FINE_LOCATION
+    ) == PERMISSION_GRANTED
+
+    private fun requestPermissions() {
+        val permissionsToRequest = mutableListOf<String>()
+
+        if (!checkCameraPermission()) permissionsToRequest.add(CAMERA)
+
+        if (!checkLocationPermission()) {
+            permissionsToRequest.add(ACCESS_COARSE_LOCATION)
+            permissionsToRequest.add(ACCESS_FINE_LOCATION)
+        }
+
+        if (permissionsToRequest.isNotEmpty()) ActivityCompat.requestPermissions(
+            this, permissionsToRequest.toTypedArray(), 100
+        )
+    }
+
+    private fun getLocation() {
+        if (checkLocationPermission()) fusedLocationClient.lastLocation.addOnSuccessListener {
+            location = it
+        } else requestPermissions()
     }
 }

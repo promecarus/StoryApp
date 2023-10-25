@@ -56,7 +56,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun getLocation() {
         if (checkSelfPermission(
-                this.applicationContext, ACCESS_FINE_LOCATION
+                this, ACCESS_FINE_LOCATION
             ) == PERMISSION_GRANTED
         ) mMap.isMyLocationEnabled = true
         else requestPermissionLauncher.launch(ACCESS_FINE_LOCATION)

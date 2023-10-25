@@ -61,8 +61,8 @@ class StoryRepository private constructor(
 
     suspend fun addStory(context: Context, description: String, uri: Uri) = flow {
         emit(Loading)
-        val photo = uriToFile(context, uri).reduceFileImage()
         val requestBody = description.toRequestBody("text/plain".toMediaType())
+        val photo = uriToFile(context, uri).reduceFileImage()
         val multiPartBodyPart = MultipartBody.Part.createFormData(
             "photo", photo.name, photo.asRequestBody("image/jpeg".toMediaType())
         )

@@ -37,7 +37,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:contentDescription="@string/image_preview"
-			android:scaleType="centerCrop" />
+			android:scaleType="centerCrop"
+			tools:ignore="ImageContrastCheck" />
 	</com.google.android.material.card.MaterialCardView>
 
 	<Button
@@ -70,9 +71,19 @@
 		android:layout_height="@dimen/height_edit_text_description"
 		android:layout_marginHorizontal="@dimen/margin_horizontal_button"
 		android:layout_marginBottom="@dimen/margin_medium"
-		app:layout_constraintBottom_toTopOf="@id/button_add"
+		app:layout_constraintBottom_toTopOf="@id/sm_location"
 		tools:ignore="TextContrastCheck"
 		tools:layout_editor_absoluteX="46dp" />
+
+	<com.google.android.material.switchmaterial.SwitchMaterial
+		android:id="@+id/sm_location"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/margin_horizontal_button"
+		android:layout_marginBottom="@dimen/margin_medium"
+		android:text="@string/with_current_location"
+		app:layout_constraintBottom_toTopOf="@id/button_add"
+		app:thumbTint="?attr/colorPrimary" />
 
 	<Button
 		android:id="@+id/button_add"

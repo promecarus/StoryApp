@@ -87,5 +87,6 @@
 	<string name="value_id">Detail Story (ID: %1$s)</string>
 	<string name="value_lat_lon">" from %1$s"</string>
 	<string name="wait">Please wait a little bit</string>
+	<string name="with_current_location">With the current location?</string>
 	<string name="with_location">Must include location</string>
 </resources>

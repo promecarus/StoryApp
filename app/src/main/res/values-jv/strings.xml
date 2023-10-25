@@ -79,5 +79,6 @@
 	<string name="value_id">Rincian Cerito (ID: %1$s)</string>
 	<string name="value_lat_lon">" saka %1$s"</string>
 	<string name="wait">Monggo nunggu sakedik</string>
+	<string name="with_current_location">Kanthi lokasi saiki?</string>
 	<string name="with_location">Kudu ngandani lokasi</string>
 </resources>

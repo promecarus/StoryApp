@@ -79,5 +79,6 @@
 	<string name="value_id">Detail Cerita (ID: %1$s)</string>
 	<string name="value_lat_lon">" dari %1$s"</string>
 	<string name="wait">Tunggu sebentar</string>
+	<string name="with_current_location">Dengan lokasi saat ini?</string>
 	<string name="with_location">Harus menyertakan lokasi</string>
 </resources>
