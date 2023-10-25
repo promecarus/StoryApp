@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.google.devtools.ksp")
     id("kotlin-parcelize")
     id("org.jetbrains.kotlin.android")
 }
@@ -69,8 +70,16 @@ dependencies {
     // okhttp
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
 
+    // paging
+    implementation("androidx.paging:paging-runtime-ktx:3.3.0-alpha02")
+
     // retrofit
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // room
+    implementation("androidx.room:room-ktx:2.6.0")
+    implementation("androidx.room:room-paging:2.6.0")
+    ksp("androidx.room:room-compiler:2.6.0")
 
     // splashscreen
     implementation("androidx.core:core-splashscreen:1.0.1")

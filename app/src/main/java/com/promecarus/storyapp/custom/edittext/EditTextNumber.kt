@@ -13,6 +13,7 @@ import com.promecarus.storyapp.R.string.cannot_more_than
 import com.promecarus.storyapp.R.string.data_size
 import com.promecarus.storyapp.utils.EditTextUtils.initEditText
 import com.promecarus.storyapp.utils.EditTextUtils.isInputEmpty
+import com.promecarus.storyapp.utils.EditTextUtils.isInputLessThan
 import com.promecarus.storyapp.utils.EditTextUtils.isInputMoreThan
 
 @SuppressLint("InlinedApi")
@@ -39,6 +40,8 @@ class EditTextNumber(context: Context, attrs: AttributeSet) : AppCompatEditText(
 
             error = when {
                 isInputEmpty(it) -> context.getString(cannot_be_empty)
+
+                isInputLessThan(it, 1) -> context.getString(cannot_be_empty)
 
                 isInputMoreThan(it, LIMIT) -> context.getString(cannot_more_than, LIMIT)
 

@@ -38,12 +38,12 @@ import com.promecarus.storyapp.utils.State.Default
 import com.promecarus.storyapp.utils.State.Error
 import com.promecarus.storyapp.utils.State.Loading
 import com.promecarus.storyapp.utils.State.Success
-import com.promecarus.storyapp.utils.ViewModelFactory
+import com.promecarus.storyapp.utils.ViewModelFactory.Companion.getInstance
 import kotlinx.coroutines.launch
 
 class AddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddBinding
-    private val viewModel by viewModels<AddViewModel> { ViewModelFactory.getInstance(this) }
+    private val viewModel by viewModels<AddViewModel> { getInstance(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

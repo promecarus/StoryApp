@@ -21,7 +21,7 @@ import com.promecarus.storyapp.R.styleable.EditTextPassword_strictValidation
 import com.promecarus.storyapp.utils.ActivityUtils.hideKeyboard
 import com.promecarus.storyapp.utils.EditTextUtils.initEditText
 import com.promecarus.storyapp.utils.EditTextUtils.isInputEmpty
-import com.promecarus.storyapp.utils.EditTextUtils.isInputLessThan
+import com.promecarus.storyapp.utils.EditTextUtils.isInputLengthLessThan
 import com.promecarus.storyapp.utils.EditTextUtils.isInputNotContainChar
 
 @SuppressLint("InlinedApi")
@@ -47,7 +47,7 @@ class EditTextPassword(context: Context, attrs: AttributeSet) : AppCompatEditTex
             error = when {
                 isInputEmpty(it) -> context.getString(error_password_empty)
 
-                isInputLessThan(it, MIN_PASSWORD_LENGTH) -> context.getString(
+                isInputLengthLessThan(it, MIN_PASSWORD_LENGTH) -> context.getString(
                     error_password_less_characters, MIN_PASSWORD_LENGTH
                 )
 

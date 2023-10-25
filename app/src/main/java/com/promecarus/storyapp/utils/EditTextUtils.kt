@@ -36,11 +36,13 @@ object EditTextUtils {
 
     fun isInputEmpty(input: Editable?) = input.toString().isEmpty()
 
+    fun isInputLessThan(input: Editable?, number: Int) = input.toString().toInt() < number
+
     fun isInputMoreThan(input: Editable?, number: Int) = input.toString().toInt() > number
 
     fun isEmailNotValid(email: Editable?) = !EMAIL_ADDRESS.matcher(email.toString()).matches()
 
-    fun isInputLessThan(input: Editable?, length: Int) = input.toString().length < length
+    fun isInputLengthLessThan(input: Editable?, length: Int) = input.toString().length < length
 
     fun isInputNotContainChar(input: Editable?, pattern: String) =
         !input.toString().matches(Regex(pattern))

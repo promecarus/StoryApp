@@ -89,7 +89,9 @@ object HelperUtils {
     fun getCity(context: Context, lat: Double?, lon: Double?, complete: Boolean = false): String? {
         if (lat == null || lon == null) return null
         try {
-            val list = Geocoder(context, Locale.getDefault()).getFromLocation(lat, lon, 1)?.get(0)
+            val list = Geocoder(context, Locale.getDefault()).getFromLocation(lat, lon, 1)?.let {
+                if (it.isNotEmpty()) it[0] else null
+            }
             return if (complete) {
                 "${list?.adminArea?.let { "$it, " } ?: ""}${list?.locality?.let { "$it, " } ?: ""}${list?.postalCode?.let { "$it, " } ?: ""}${list?.countryName ?: ""}"
             } else when {

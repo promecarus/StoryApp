@@ -11,13 +11,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.promecarus.storyapp.databinding.ActivitySettingBinding
 import com.promecarus.storyapp.ui.viewmodel.SettingViewModel
 import com.promecarus.storyapp.utils.Setting
-import com.promecarus.storyapp.utils.ViewModelFactory
+import com.promecarus.storyapp.utils.ViewModelFactory.Companion.getInstance
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 class SettingActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingBinding
-    private val viewModel by viewModels<SettingViewModel> { ViewModelFactory.getInstance(this) }
+    private val viewModel by viewModels<SettingViewModel> { getInstance(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,7 @@ class SettingActivity : AppCompatActivity() {
                 viewModel.setSetting(
                     Setting(
                         if (binding.edSize.error == null) binding.edSize.text.toString()
-                            .toInt() else 0,
+                            .toInt() else 1,
                         binding.smWithLocation.isChecked
                     )
                 )

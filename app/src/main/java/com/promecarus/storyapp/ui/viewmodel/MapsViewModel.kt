@@ -14,6 +14,8 @@ class MapsViewModel(private val storyRepository: StoryRepository) : ViewModel() 
     val state: StateFlow<State<List<Story>>> = _state
 
     init {
-        viewModelScope.launch { storyRepository.getStories(1).collect { _state.value = it } }
+        viewModelScope.launch {
+            storyRepository.getStoriesWithLocation().collect { _state.value = it }
+        }
     }
 }

@@ -65,6 +65,7 @@
 	<string name="password">Kata Sandi</string>
 	<string name="permission_request">Permintaan Izin %1$s</string>
 	<string name="register">Daftar</string>
+	<string name="retry">Coba Kembali</string>
 	<string name="rto">Lalu lintas tinggi saat ini, harap segarkan secara manual</string>
 	<string name="setting">Pengaturan</string>
 	<string name="story">Cerita</string>

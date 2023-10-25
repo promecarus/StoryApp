@@ -1,11 +1,14 @@
 package com.promecarus.storyapp.data.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
+@Entity(tableName = "story")
 @Parcelize
 data class Story(
-    val id: String,
+    @PrimaryKey val id: String,
     val name: String,
     val description: String,
     val photoUrl: String,

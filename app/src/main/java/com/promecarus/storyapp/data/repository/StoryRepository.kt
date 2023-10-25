@@ -2,7 +2,11 @@ package com.promecarus.storyapp.data.repository
 
 import android.content.Context
 import android.net.Uri
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import com.google.gson.Gson
+import com.promecarus.storyapp.data.local.database.StoryDatabase
 import com.promecarus.storyapp.data.local.preference.SessionPreference
 import com.promecarus.storyapp.data.local.preference.SettingPreference
 import com.promecarus.storyapp.data.model.Common
@@ -12,6 +16,7 @@ import com.promecarus.storyapp.utils.State.Default
 import com.promecarus.storyapp.utils.State.Error
 import com.promecarus.storyapp.utils.State.Loading
 import com.promecarus.storyapp.utils.State.Success
+import com.promecarus.storyapp.utils.StoryRemoteMediator
 import com.promecarus.storyapp.utils.reduceFileImage
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -25,14 +30,22 @@ class StoryRepository private constructor(
     private val apiService: ApiService,
     private val sessionPreference: SessionPreference,
     private val settingPreference: SettingPreference,
+    private val storyDatabase: StoryDatabase,
 ) {
-    suspend fun getStories(mustWithLocation: Int = 0) = flow {
+    @OptIn(ExperimentalPagingApi::class)
+    fun getStories() =
+        Pager(config = PagingConfig(pageSize = 5), remoteMediator = StoryRemoteMediator(
+            apiService, sessionPreference, settingPreference, storyDatabase
+        ), pagingSourceFactory = { storyDatabase.storyDao().getAllStory() }).flow
+
+    suspend fun getStoriesWithLocation() = flow {
         emit(Loading)
         try {
             apiService.getStories(
                 "Bearer ${sessionPreference.getSession().first().token}",
+                1,
                 settingPreference.getSetting().first().size,
-                if (settingPreference.getSetting().first().location) 1 else mustWithLocation
+                1
             ).let {
                 emit(Default)
                 if (it.isSuccessful) it.body()?.also { data ->
@@ -79,8 +92,11 @@ class StoryRepository private constructor(
             apiService: ApiService,
             sessionPreference: SessionPreference,
             settingPreference: SettingPreference,
+            storyDatabase: StoryDatabase,
         ) = INSTANCE ?: synchronized(this) {
-            INSTANCE ?: StoryRepository(apiService, sessionPreference, settingPreference)
+            INSTANCE ?: StoryRepository(
+                apiService, sessionPreference, settingPreference, storyDatabase
+            )
         }.also { INSTANCE = it }
     }
 }

@@ -14,21 +14,16 @@ import com.promecarus.storyapp.R.id.action_language
 import com.promecarus.storyapp.R.id.action_logout
 import com.promecarus.storyapp.R.id.action_map
 import com.promecarus.storyapp.R.id.action_settings
-import com.promecarus.storyapp.R.string.error_no_stories
+import com.promecarus.storyapp.custom.adapter.LoadingAdapter
 import com.promecarus.storyapp.custom.adapter.StoryAdapter
 import com.promecarus.storyapp.databinding.ActivityMainBinding
 import com.promecarus.storyapp.ui.viewmodel.MainViewModel
-import com.promecarus.storyapp.utils.ActivityUtils.handleMessage
-import com.promecarus.storyapp.utils.State.Default
-import com.promecarus.storyapp.utils.State.Error
-import com.promecarus.storyapp.utils.State.Loading
-import com.promecarus.storyapp.utils.State.Success
-import com.promecarus.storyapp.utils.ViewModelFactory
+import com.promecarus.storyapp.utils.ViewModelFactory.Companion.getInstance
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val viewModel by viewModels<MainViewModel> { ViewModelFactory.getInstance(this) }
+    private val viewModel by viewModels<MainViewModel> { getInstance(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,39 +97,21 @@ class MainActivity : AppCompatActivity() {
                     binding.appBarLayout.visibility = VISIBLE
                     binding.nestedScrollView.visibility = VISIBLE
                     binding.extendedFab.visibility = VISIBLE
+                    binding.progressBar.visibility = VISIBLE
                     viewModel.getStories()
                 }
             }
         }
 
+        val adapter = StoryAdapter(this)
+        binding.recyclerView.apply {
+            this.adapter = adapter.withLoadStateFooter(footer = LoadingAdapter { adapter.retry() })
+        }
+
         lifecycleScope.launch {
-            viewModel.state.collect {
-                when (it) {
-                    is Loading -> {
-                        binding.recyclerView.visibility = GONE
-                        binding.progressBar.visibility = VISIBLE
-                    }
-
-                    is Success -> if (it.data.isEmpty()) {
-                        binding.textViewEmpty.visibility = GONE
-                        binding.textViewEmpty.apply {
-                            text = context.getString(error_no_stories)
-                            visibility = VISIBLE
-                        }
-                    } else binding.recyclerView.apply {
-                        adapter = StoryAdapter(this@MainActivity, it.data)
-                        hasFixedSize()
-                        visibility = VISIBLE
-                    }
-
-                    is Error -> {
-                        binding.recyclerView.visibility = GONE
-                        binding.textViewEmpty.visibility = VISIBLE
-                        handleMessage(this@MainActivity, it.error)
-                    }
-
-                    is Default -> binding.progressBar.visibility = GONE
-                }
+            viewModel.getStories().collect {
+                binding.progressBar.visibility = GONE
+                adapter.submitData(lifecycle, it)
             }
         }
     }

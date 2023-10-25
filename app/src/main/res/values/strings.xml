@@ -72,6 +72,7 @@
 	<string name="password">Password</string>
 	<string name="permission_request">Permission request %1$s</string>
 	<string name="register">Register</string>
+	<string name="retry">Retry</string>
 	<string name="rto">High traffic currently, please refresh manually</string>
 	<string name="setting">Settings</string>
 	<string name="story">Story</string>

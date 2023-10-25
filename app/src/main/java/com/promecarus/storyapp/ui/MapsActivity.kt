@@ -8,10 +8,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.maps.CameraUpdateFactory.newLatLngBounds
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions.loadRawResourceStyle
 import com.google.android.gms.maps.model.MarkerOptions
 import com.promecarus.storyapp.R.id.map
@@ -19,12 +21,12 @@ import com.promecarus.storyapp.R.raw.map_style
 import com.promecarus.storyapp.databinding.ActivityMapsBinding
 import com.promecarus.storyapp.ui.viewmodel.MapsViewModel
 import com.promecarus.storyapp.utils.State
-import com.promecarus.storyapp.utils.ViewModelFactory
+import com.promecarus.storyapp.utils.ViewModelFactory.Companion.getInstance
 import kotlinx.coroutines.launch
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
-    private val viewModel by viewModels<MapsViewModel> { ViewModelFactory.getInstance(this) }
+    private val viewModel by viewModels<MapsViewModel> { getInstance(this) }
     private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,18 +47,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             setMapStyle(loadRawResourceStyle(this@MapsActivity, map_style))
         }
 
-        getPermission()
+        getLocation()
         observeViewModel()
     }
 
-    private fun getPermission() {
+    private val requestPermissionLauncher =
+        registerForActivityResult(RequestPermission()) { if (it) getLocation() }
+
+    private fun getLocation() {
         if (checkSelfPermission(
                 this.applicationContext, ACCESS_FINE_LOCATION
             ) == PERMISSION_GRANTED
         ) mMap.isMyLocationEnabled = true
-        else registerForActivityResult(RequestPermission()) {
-            if (it) mMap.isMyLocationEnabled = true
-        }.launch(ACCESS_FINE_LOCATION)
+        else requestPermissionLauncher.launch(ACCESS_FINE_LOCATION)
     }
 
     private fun observeViewModel() {
@@ -66,14 +69,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     is State.Loading -> {}
 
                     is State.Success -> {
+                        val boundsBuilder = LatLngBounds.Builder()
+
                         it.data.forEach { story ->
-                            if (story.lat != null && story.lon != null) {
-                                mMap.addMarker(
-                                    MarkerOptions().position(LatLng(story.lat, story.lon))
-                                        .title(story.name).snippet(story.description).flat(true)
-                                )
-                            }
+                            val latLng = LatLng(story.lat!!, story.lon!!)
+                            mMap.addMarker(
+                                MarkerOptions().position(latLng).title(story.name)
+                                    .snippet(story.description)
+                            )
+                            boundsBuilder.include(latLng)
                         }
+                        mMap.animateCamera(
+                            newLatLngBounds(
+                                boundsBuilder.build(),
+                                resources.displayMetrics.widthPixels,
+                                resources.displayMetrics.heightPixels,
+                                500
+                            )
+                        )
                     }
 
                     is State.Error -> {}
