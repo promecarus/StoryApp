@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import com.promecarus.storyapp.R.id.action_language
 import com.promecarus.storyapp.R.id.action_logout
 import com.promecarus.storyapp.R.id.action_map
@@ -18,6 +19,7 @@ import com.promecarus.storyapp.custom.adapter.LoadingAdapter
 import com.promecarus.storyapp.custom.adapter.StoryAdapter
 import com.promecarus.storyapp.databinding.ActivityMainBinding
 import com.promecarus.storyapp.ui.viewmodel.MainViewModel
+import com.promecarus.storyapp.utils.ActivityUtils.handleMessage
 import com.promecarus.storyapp.utils.ViewModelFactory.Companion.getInstance
 import kotlinx.coroutines.launch
 
@@ -36,10 +38,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        binding.topAppBar.setNavigationOnClickListener {
-            viewModel.getStories()
-        }
-
         binding.topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 action_language -> {
@@ -97,21 +95,39 @@ class MainActivity : AppCompatActivity() {
                     binding.appBarLayout.visibility = VISIBLE
                     binding.nestedScrollView.visibility = VISIBLE
                     binding.extendedFab.visibility = VISIBLE
-                    binding.progressBar.visibility = VISIBLE
                     viewModel.getStories()
                 }
             }
         }
 
         val adapter = StoryAdapter(this)
+
         binding.recyclerView.apply {
             this.adapter = adapter.withLoadStateFooter(footer = LoadingAdapter { adapter.retry() })
         }
 
         lifecycleScope.launch {
             viewModel.getStories().collect {
-                binding.progressBar.visibility = GONE
                 adapter.submitData(lifecycle, it)
+            }
+        }
+
+        adapter.addLoadStateListener {
+            when (it.refresh) {
+                is LoadState.Loading -> {
+                    binding.recyclerView.visibility = GONE
+                    binding.progressBar.visibility = VISIBLE
+                }
+
+                is LoadState.NotLoading -> {
+                    binding.progressBar.visibility = GONE
+                    binding.recyclerView.visibility = VISIBLE
+                }
+
+                is LoadState.Error -> {
+                    binding.progressBar.visibility = GONE
+                    handleMessage(this, (it.refresh as LoadState.Error).error.message.toString())
+                }
             }
         }
     }

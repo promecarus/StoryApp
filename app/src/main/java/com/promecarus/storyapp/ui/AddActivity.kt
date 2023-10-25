@@ -127,6 +127,7 @@ class AddActivity : AppCompatActivity() {
                         binding.btnGallery.isEnabled = false
                         binding.edAddDescription.isEnabled = false
                         binding.buttonAdd.isEnabled = false
+                        binding.smLocation.isEnabled = false
                         binding.progressBar.visibility = VISIBLE
                     }
 
