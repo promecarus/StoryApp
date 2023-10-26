@@ -1,6 +1,5 @@
 package com.promecarus.storyapp.utils
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.LoadType.APPEND
@@ -84,7 +83,6 @@ class StoryRemoteMediator(
                 }
                 if (keys != null) storyDatabase.remoteKeysDao().insertAll(keys)
                 if (responseData != null) storyDatabase.storyDao().insertStory(responseData)
-                Log.d("StoryRemoteMediator", "jalan")
             }
             MediatorResult.Success(endOfPaginationReached = (endOfPaginationReached == true))
         } catch (exception: Exception) {
