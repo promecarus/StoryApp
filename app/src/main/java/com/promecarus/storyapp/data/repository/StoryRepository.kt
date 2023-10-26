@@ -20,6 +20,7 @@ import com.promecarus.storyapp.utils.StoryRemoteMediator
 import com.promecarus.storyapp.utils.reduceFileImage
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.runBlocking
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -33,10 +34,11 @@ class StoryRepository private constructor(
     private val storyDatabase: StoryDatabase,
 ) {
     @OptIn(ExperimentalPagingApi::class)
-    fun getStories() =
-        Pager(config = PagingConfig(pageSize = 5), remoteMediator = StoryRemoteMediator(
-            apiService, sessionPreference, settingPreference, storyDatabase
-        ), pagingSourceFactory = { storyDatabase.storyDao().getAllStory() }).flow
+    fun getStories() = Pager(config = PagingConfig(pageSize = runBlocking {
+        settingPreference.getSetting().first().size
+    }), remoteMediator = StoryRemoteMediator(
+        apiService, sessionPreference, settingPreference, storyDatabase
+    ), pagingSourceFactory = { storyDatabase.storyDao().getAllStory() }).flow
 
     suspend fun getStoriesWithLocation() = flow {
         emit(Loading)
