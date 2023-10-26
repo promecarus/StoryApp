@@ -34,7 +34,6 @@
 	<string name="cannot_more_than">Cannot more than %1$d</string>
 	<string name="connect_or_relaunch">Unable to connect to the internet. Please check your connection or relaunch the application.</string>
 	<string name="data_size">Data Size</string>
-	<string name="denied">denied</string>
 	<string name="description">Description</string>
 	<string name="email">Email</string>
 	<string name="error">Error</string>
@@ -61,7 +60,6 @@
 	<string name="error_user_not_found">User not found</string>
 	<string name="from">" from %1$s"</string>
 	<string name="gallery">Gallery</string>
-	<string name="granted">granted</string>
 	<string name="image_preview">Image preview</string>
 	<string name="language">Language</string>
 	<string name="login">Login</string>
@@ -70,7 +68,6 @@
 	<string name="name">Name</string>
 	<string name="ok">OK</string>
 	<string name="password">Password</string>
-	<string name="permission_request">Permission request %1$s</string>
 	<string name="register">Register</string>
 	<string name="retry">Retry</string>
 	<string name="rto">High traffic currently, please refresh manually</string>

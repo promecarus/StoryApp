@@ -27,7 +27,6 @@
 	<string name="cannot_more_than">Tidak boleh lebih dari %1$d</string>
 	<string name="connect_or_relaunch">Tidak dapat terhubung ke internet. Harap periksa koneksi Anda atau mulai ulang aplikasi.</string>
 	<string name="data_size">Ukuran Data</string>
-	<string name="denied">ditolak</string>
 	<string name="description">Deskripsi</string>
 	<string name="email">Email</string>
 	<string name="error">Kesalahan</string>
@@ -54,7 +53,6 @@
 	<string name="error_user_not_found">Pengguna tidak ditemukan</string>
 	<string name="from">" dari %1$s"</string>
 	<string name="gallery">Galeri</string>
-	<string name="granted">diberikan</string>
 	<string name="image_preview">Pratinjau Gambar</string>
 	<string name="language">Bahasa</string>
 	<string name="login">Masuk</string>
@@ -63,7 +61,6 @@
 	<string name="name">Nama</string>
 	<string name="ok">OK</string>
 	<string name="password">Kata Sandi</string>
-	<string name="permission_request">Permintaan Izin %1$s</string>
 	<string name="register">Daftar</string>
 	<string name="retry">Coba Kembali</string>
 	<string name="rto">Lalu lintas tinggi saat ini, harap segarkan secara manual</string>

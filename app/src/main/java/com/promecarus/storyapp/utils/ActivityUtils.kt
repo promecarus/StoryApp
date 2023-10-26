@@ -96,19 +96,19 @@ object ActivityUtils {
             -> dialog(
                 context, error_no_internet, connect_or_relaunch
             ).setPositiveButton(try_again) { _, _ ->
-                startNewActivity(context, context::class.java, false)
+                startNewActivity(context, context::class.java)
             }.show()
 
             "Bad HTTP authentication header format" -> dialog(
                 context, error, error_bad_http_auth
             ).setPositiveButton(ok) { _, _ ->
-                startNewActivity(context, context::class.java, false)
+                startNewActivity(context, context::class.java)
             }.show()
 
-            "timeout" -> startNewActivity(context, MainActivity::class.java, false, rto)
+            "timeout" -> startNewActivity(context, MainActivity::class.java, rto)
 
             else -> dialog(context, error, message).setPositiveButton(ok) { _, _ ->
-                startNewActivity(context, context::class.java, false)
+                startNewActivity(context, context::class.java)
             }.show()
         }
     }
@@ -133,11 +133,10 @@ object ActivityUtils {
     private fun startNewActivity(
         context: Context,
         target: Class<*>,
-        withAnimation: Boolean = true,
         message: Int = 0,
     ) {
         context.startActivity(Intent(context, target).apply {
-            if (!withAnimation) flags = FLAG_ACTIVITY_NO_ANIMATION
+            flags = FLAG_ACTIVITY_NO_ANIMATION
         })
         if (context is Activity) context.finish()
         if (message != 0) makeText(context, message, LENGTH_SHORT).show()

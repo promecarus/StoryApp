@@ -27,7 +27,6 @@
 	<string name="cannot_more_than">Ora boleh luwih saka %1$d</string>
 	<string name="connect_or_relaunch">Ora bisa nyambung karo internet. Sampuncek jaringan sampeyan utawa mulihake aplikasi.</string>
 	<string name="data_size">Ukuran Data</string>
-	<string name="denied">ditolak</string>
 	<string name="description">Larapan</string>
 	<string name="email">Email</string>
 	<string name="error">Kesalahan</string>
@@ -54,7 +53,6 @@
 	<string name="error_user_not_found">Pengguna ora kapendek</string>
 	<string name="from">" saka %1$s"</string>
 	<string name="gallery">Galeri</string>
-	<string name="granted">disetujoni</string>
 	<string name="image_preview">Pratayang Gambar</string>
 	<string name="language">Basa</string>
 	<string name="login">Mlebu</string>
@@ -63,7 +61,6 @@
 	<string name="name">Jeneng</string>
 	<string name="ok">OK</string>
 	<string name="password">Sandi</string>
-	<string name="permission_request">Paminta Ijin %1$s</string>
 	<string name="register">Daftar</string>
 	<string name="retry">Nyoba Maneh</string>
 	<string name="rto">Lalu lintas kang luwih utama saiki, monggo segarakno manual</string>

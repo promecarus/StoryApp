@@ -15,6 +15,7 @@ import com.promecarus.storyapp.R.id.action_language
 import com.promecarus.storyapp.R.id.action_logout
 import com.promecarus.storyapp.R.id.action_map
 import com.promecarus.storyapp.R.id.action_settings
+import com.promecarus.storyapp.R.string.error_no_stories
 import com.promecarus.storyapp.custom.adapter.LoadingAdapter
 import com.promecarus.storyapp.custom.adapter.StoryAdapter
 import com.promecarus.storyapp.databinding.ActivityMainBinding
@@ -115,13 +116,21 @@ class MainActivity : AppCompatActivity() {
         adapter.addLoadStateListener {
             when (it.refresh) {
                 is LoadState.Loading -> {
+                    binding.textViewEmpty.visibility = GONE
                     binding.recyclerView.visibility = GONE
                     binding.progressBar.visibility = VISIBLE
                 }
 
                 is LoadState.NotLoading -> {
                     binding.progressBar.visibility = GONE
-                    binding.recyclerView.visibility = VISIBLE
+                    if (adapter.itemCount == 0) {
+                        binding.recyclerView.visibility = GONE
+                        binding.textViewEmpty.visibility = VISIBLE
+                        binding.textViewEmpty.text = getString(error_no_stories)
+                    } else {
+                        binding.textViewEmpty.visibility = GONE
+                        binding.recyclerView.visibility = VISIBLE
+                    }
                 }
 
                 is LoadState.Error -> {
