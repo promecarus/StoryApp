@@ -8,21 +8,19 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat.makeSceneTransitionAnimation
 import androidx.core.util.Pair
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import com.promecarus.storyapp.R.string.from
 import com.promecarus.storyapp.data.model.Story
 import com.promecarus.storyapp.databinding.ItemStoryBinding
 import com.promecarus.storyapp.ui.DetailActivity
+import com.promecarus.storyapp.ui.DetailActivity.Companion.EXTRA_STORY
 import com.promecarus.storyapp.utils.HelperUtils.getCity
 import com.promecarus.storyapp.utils.HelperUtils.getTimeAgo
 import com.promecarus.storyapp.utils.HelperUtils.loadWithCircularProgress
 
 class StoryAdapter(private val context: Context) :
-    PagingDataAdapter<Story, StoryAdapter.ViewHolder>(object : DiffUtil.ItemCallback<Story>() {
-        override fun areItemsTheSame(oldItem: Story, newItem: Story) = oldItem == newItem
-        override fun areContentsTheSame(oldItem: Story, newItem: Story) = oldItem.id == newItem.id
-    }) {
+    PagingDataAdapter<Story, StoryAdapter.ViewHolder>(DIFF_CALLBACK) {
     inner class ViewHolder(private val binding: ItemStoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(story: Story) = bind(binding, story)
@@ -52,7 +50,7 @@ class StoryAdapter(private val context: Context) :
             root.setOnClickListener {
                 it.context.startActivity(
                     Intent(context, DetailActivity::class.java).apply {
-                        putExtra(DetailActivity.EXTRA_STORY, story)
+                        putExtra(EXTRA_STORY, story)
                     }, makeSceneTransitionAnimation(
                         context as Activity,
                         Pair(mcvItemStory, "card"),
@@ -63,6 +61,14 @@ class StoryAdapter(private val context: Context) :
                     ).toBundle()
                 )
             }
+        }
+    }
+
+    companion object {
+        val DIFF_CALLBACK = object : ItemCallback<Story>() {
+            override fun areItemsTheSame(oldItem: Story, newItem: Story) = oldItem == newItem
+            override fun areContentsTheSame(oldItem: Story, newItem: Story) =
+                oldItem.id == newItem.id
         }
     }
 }
