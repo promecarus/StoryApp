@@ -76,7 +76,7 @@ class StoryRemoteMediator(
                     storyDatabase.remoteKeysDao().deleteRemoteKeys()
                     storyDatabase.storyDao().deleteAll()
                 }
-                val prevKey = if (page == 1) null else page - 1
+                val prevKey = if (page == INITIAL_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached == true) null else page + 1
                 val keys = responseData?.map {
                     RemoteKeys(id = it.id, prevKey = prevKey, nextKey = nextKey)

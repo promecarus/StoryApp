@@ -1,4 +1,4 @@
-package com.promecarus.storyapp.utils
+package com.promecarus.storyapp
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -4,10 +4,10 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.promecarus.storyapp.DataDummy
+import com.promecarus.storyapp.MainDispatcherRule
 import com.promecarus.storyapp.data.model.Story
 import com.promecarus.storyapp.data.repository.AuthRepository
 import com.promecarus.storyapp.data.repository.StoryRepository
-import com.promecarus.storyapp.utils.MainDispatcherRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -37,31 +37,32 @@ class MainViewModelTest {
     private lateinit var storyRepository: StoryRepository
 
     @Test
-    fun `when Get Story Should Not Null and Return Data`() = runTest {
-        val data = DataDummy.generateDummyStories()
+    fun `when Get Stories Has Data Should Return Not Null and Type of PagingData Story`() =
+        runTest {
+            val data = DataDummy.generateDummyStories()
 
-        val expected = PagingData.from(data)
+            val expected = PagingData.from(data)
 
-        `when`(storyRepository.getStories()).thenReturn(flow { emit(expected) })
+            `when`(storyRepository.getStories()).thenReturn(flow { emit(expected) })
 
-        val actual = MainViewModel(authRepository, storyRepository).getStories().first()
+            val actual = MainViewModel(authRepository, storyRepository).getStories().first()
 
-        assertNotNull(actual)
-        assert(actual is PagingData<Story>)
-    }
+            assertNotNull(actual)
+            assert(actual is PagingData<Story>)
+        }
 
     @Test
-    fun `when Get Story Empty Should Return No Data`() = runTest {
+    fun `when Get Stories Empty Should Return No Data`() = runTest {
         val data = emptyList<Story>()
 
         val expected = PagingData.from(data)
 
         `when`(storyRepository.getStories()).thenReturn(flow { emit(expected) })
 
-        var tempSize = 0
+        var actual = 0
 
-        MainViewModel(authRepository, storyRepository).getStories().first().map { tempSize += 1 }
+        MainViewModel(authRepository, storyRepository).getStories().first().map { actual += 1 }
 
-        assert(tempSize == data.size)
+        assert(actual == data.size)
     }
 }
