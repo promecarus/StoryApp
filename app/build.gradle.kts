@@ -44,6 +44,7 @@ android {
         viewBinding = true
     }
     @Suppress("UnstableApiUsage") testOptions {
+        animationsDisabled = true
         unitTests.isReturnDefaultValues = true
     }
 }
