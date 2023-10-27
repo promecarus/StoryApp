@@ -43,6 +43,9 @@ android {
         buildConfig = true
         viewBinding = true
     }
+    @Suppress("UnstableApiUsage") testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -58,8 +61,8 @@ dependencies {
     // testing
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
-    implementation("androidx.arch.core:core-testing:2.2.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
     testImplementation("org.mockito:mockito-core:4.4.0")
     testImplementation("org.mockito:mockito-inline:4.4.0")
 
@@ -76,6 +79,10 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
 
+    // lifecycle
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+
     // okhttp
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
 
@@ -88,6 +95,7 @@ dependencies {
     // room
     implementation("androidx.room:room-ktx:2.6.0")
     implementation("androidx.room:room-paging:2.6.0")
+    implementation("androidx.room:room-runtime:2.6.0")
     ksp("androidx.room:room-compiler:2.6.0")
 
     // splashscreen
@@ -95,4 +103,7 @@ dependencies {
 
     // swiperefreshlayout
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
+
+    // viewpager2
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 }

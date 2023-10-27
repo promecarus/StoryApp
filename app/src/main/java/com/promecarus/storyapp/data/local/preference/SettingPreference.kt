@@ -16,7 +16,7 @@ class SettingPreference private constructor(private val dataStore: DataStore<Pre
 
     fun getSetting() = dataStore.data.map {
         Setting(
-            it[intPreferencesKey(SIZE)] ?: 10,
+            it[intPreferencesKey(SIZE)] ?: 5,
             it[booleanPreferencesKey(LOCATION)] ?: false,
         )
     }
