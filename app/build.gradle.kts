@@ -79,10 +79,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
 
-    // lifecycle
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-
     // okhttp
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
 
@@ -103,7 +99,4 @@ dependencies {
 
     // swiperefreshlayout
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
-
-    // viewpager2
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
 }
